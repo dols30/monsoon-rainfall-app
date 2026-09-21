@@ -13,7 +13,7 @@ python -m pip install -r requirements.txt
 python -m streamlit run app.py
 ```
 
-Open http://localhost:8501. On macOS, XGBoost requires the OpenMP runtime (`brew install libomp` if it is not already installed). The included `run-local.command` starts the app using the environment prepared on this computer.
+## Data Processing and Models Training with Comparison (ANN, XGB $ Random Forest) is done at "github: https://github.com/dols30/Rainfall-Prediction-Nepal-RF-ANN-XGB"
 
 Choose a city on the interactive map (or in the station dropdown) and an observation date, enter the day's measurements across the four tabs, then choose **Generate forecast**. Search cities and use the map zoom controls to explore the seven provinces. Map selections and the station dropdown stay synchronized. Rain forecasts show a rain cloud; no-rain forecasts show a sun. Input defaults are examples, not current weather. Editing inputs hides the previous forecast until you run it again. Reset restores the example measurements and today's Nepal date, retaining the selected station.
 
