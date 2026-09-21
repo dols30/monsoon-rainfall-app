@@ -67,7 +67,7 @@ Tests cover rainfall thresholds, calendar features, invalid inputs, all trained 
 
 ## Deployment
 
-The app can run on a Streamlit host with Python 3.12 and these pinned dependencies. Include the model, application files, and `.streamlit` directory. Launch `streamlit run app.py`. No API keys are needed. Review dataset/model redistribution rights before publishing the artifact. This project has not been deployed publicly.
+The app can run on a Streamlit host with Python 3.12 and these pinned dependencies. Include the model, application files, and `.streamlit` directory. Launch `streamlit run app.py`. No API keys are needed. Review dataset/model redistribution rights before publishing the artifact. This project has been deployed publicly at "https://monsoonai.streamlit.app".
 
 ## Map attribution
 
