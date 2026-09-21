@@ -1,0 +1,39 @@
+<section class="explore-card station-picker" aria-label="Explore Nepal weather stations">
+  <div class="explore-info">
+    <h2 class="explore-title">Choose a city<br>from the map</h2>
+    <div class="selected-station-box">
+      <div class="station-indicator">
+        <span class="station-dot">●</span>
+        <strong data-selected aria-live="polite">Kathmandu</strong>
+      </div>
+      <span class="station-sublabel">SELECTED STATION</span>
+    </div>
+  </div>
+  <div class="explore-map-col">
+    <div class="map-canvas">
+      <svg viewBox="0 0 960 450" aria-label="Map of Nepal with selectable cities">
+        <defs>
+          <pattern id="map-grid" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".8" fill="#c8d6e4" /></pattern>
+        </defs>
+        <rect width="960" height="450" fill="#edf4f8" />
+        <rect width="960" height="450" fill="url(#map-grid)" opacity=".6" />
+        <g data-map-layer>
+          <text class="region-label" x="700" y="150">C H I N A</text>
+          <text class="region-label" x="480" y="380">I N D I A</text>
+          <g data-provinces></g>
+          <path data-boundary fill="none" stroke="#9aafbf" stroke-width="1.5" stroke-linejoin="round" />
+          <text class="country-label" x="590" y="235">N E P A L</text>
+          <g data-stations></g>
+        </g>
+      </svg>
+      <div class="north" aria-hidden="true">N<br>↑</div>
+    </div>
+    <div class="map-footer-row">
+      <span>Click a city · <span data-count>11 stations</span></span>
+      <span>City locations are approximate</span>
+    </div>
+    <div class="mobile-stations" aria-label="Choose a city"></div>
+    <div class="no-results" role="status" hidden>No matching station.</div>
+  </div>
+</section>
+
