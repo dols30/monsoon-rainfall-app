@@ -40,7 +40,7 @@ To load a different compatible, trusted local artifact, set `RAINFALL_MODEL_PATH
 - Calendar features come from the observation date, with Monday = 0.
 - Stations are read from the fitted encoder, not a hand-maintained city list.
 
-This is a late-day next-day prediction, because it requires 3 PM observations and the day's rainfall total. The app has no live-weather feed. It predicts the binary training label and a model-estimated probability; it does not predict rainfall amount. The dataset's provenance, collection method, and operational validity have not been independently verified. Probabilities have not been independently calibrated. Held-out metrics on this dataset are not evidence of reliable future real-world forecasts.
+This is a late-day next-day prediction, because it requires 3 PM observations and the day's rainfall total. The app does not fetch weather on its own; the optional **Fill from Open-Meteo** button loads the readings for the chosen station and date when you click it. It predicts the binary training label and a model-estimated probability; it does not predict rainfall amount. The dataset's provenance, collection method, and operational validity have not been independently verified. Probabilities have not been independently calibrated. Held-out metrics on this dataset are not evidence of reliable future real-world forecasts.
 
 ## Code layout
 

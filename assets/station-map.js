@@ -43,6 +43,14 @@ export default function ({ parentElement, data, setTriggerValue }) {
   const selectedEl = root.querySelector("[data-selected]");
   if (selectedEl && data?.selected) selectedEl.textContent = data.selected;
 
+  const subLabel = root.querySelector(".station-sublabel");
+  if (subLabel) {
+    const f = data?.forecast;
+    subLabel.textContent = f && f.location === data.selected
+      ? `Forecast: ${f.rain ? "rain" : "no rain"}, ${Math.round(f.probability * 100)}% chance of rain`
+      : "Selected station";
+  }
+
   const countEl = root.querySelector("[data-count]");
   if (countEl && data?.stations) countEl.textContent = `${data.stations.length} stations`;
 
@@ -63,12 +71,15 @@ export default function ({ parentElement, data, setTriggerValue }) {
       const [x, y] = project(station.coordinates);
       const [dx, dy] = station.label_offset;
       const selected = station.name === data.selected;
+      const result = data.forecast && data.forecast.location === station.name ? data.forecast : null;
+      const percent = result ? Math.round(result.probability * 100) : 0;
       const marker = svgElement("g", {
-        class: "station", transform: `translate(${x},${y})`,
-        role: "button", tabindex: "0", "aria-label": `Select ${station.name}`,
+        class: "station" + (result ? (result.rain ? " result-rain" : " result-dry") : ""), transform: `translate(${x},${y})`,
+        role: "button", tabindex: "0",
+        "aria-label": result ? `Select ${station.name}. Forecast: ${result.rain ? "rain" : "no rain"}, ${percent} percent chance of rain.` : `Select ${station.name}`,
         "aria-pressed": String(selected), "data-station": station.name,
       });
-      const labelWidth = station.name.length * 11;
+      const labelWidth = station.name.length * 11 + (result ? 84 : 0);
       const left = Math.min(-20, dx < 0 ? dx - labelWidth : dx);
       const right = Math.max(20, dx < 0 ? dx : dx + labelWidth);
       const top = Math.min(-20, dy - 20);
@@ -82,6 +93,11 @@ export default function ({ parentElement, data, setTriggerValue }) {
         x: dx, y: dy, class: "city-label", "text-anchor": dx < 0 ? "end" : "start",
       });
       label.textContent = station.name;
+      if (result) {
+        const tag = svgElement("tspan", { class: "result-tag", dx: 8 });
+        tag.textContent = `${percent}% rain`;
+        label.append(tag);
+      }
       marker.append(label);
       marker.onclick = () => choose(station.name);
       marker.onkeydown = event => {

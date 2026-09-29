@@ -9,7 +9,14 @@ import streamlit.components.v2 as components
 
 ASSETS = Path(__file__).resolve().parents[1] / "assets"
 
-def render_station_map(locations: tuple[str, ...]):
+def map_forecast(saved, location, fingerprint):
+    """The saved forecast in the shape the map draws, or None once the station or inputs have changed."""
+    if not saved or saved.get("location") != location or saved.get("inputs") != fingerprint:
+        return None
+    return {"location": location, "rain": bool(saved["result"].rain), "probability": float(saved["result"].probability)}
+
+
+def render_station_map(locations: tuple[str, ...], forecast: dict | None = None):
     if not locations:
         return
     if st.session_state.get("location") not in locations:
@@ -34,6 +41,7 @@ def render_station_map(locations: tuple[str, ...]):
             "provinces": map_data["provinces"],
             "stations": [station for station in map_data["stations"] if station["name"] in locations],
             "selected": st.session_state["location"],
+            "forecast": forecast,
         },
         key="nepal_map",
         on_station_change=select_station,
