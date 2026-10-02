@@ -226,3 +226,5 @@ footer a {color:var(--muted)!important;text-underline-offset:3px;}
   .page-heading h1 {font-size:32px!important;letter-spacing:-1px!important;}
 }
 @media(max-width:360px) {.site-header nav {gap:16px;}.brand {font-size:20px;}}
+
+[data-testid="stTabs"] .react-aria-SelectionIndicator {display:none!important;}
