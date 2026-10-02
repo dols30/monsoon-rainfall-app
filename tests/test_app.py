@@ -9,7 +9,7 @@ APP = Path(__file__).resolve().parents[1] / "app.py"
 def test_prediction_edit_and_reset():
     app = AppTest.from_file(str(APP), default_timeout=30).run()
     assert not app.exception
-    assert len(app.selectbox[0].options) == 11
+    assert len(app.selectbox(key="location").options) == 11
     app.button(key="generate").click().run()
     assert not app.exception
     assert "forecast" in app.session_state

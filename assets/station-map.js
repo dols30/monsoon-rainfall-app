@@ -28,7 +28,7 @@ export default function ({ parentElement, data, setTriggerValue }) {
   const points = root.querySelector("[data-stations]");
   const mobile = root.querySelector(".mobile-stations");
   const provinces = root.querySelector("[data-provinces]");
-  const colors = ["#dee5f7", "#dbeaf6", "#e8e1f3", "#d9ece7", "#e8ecd4", "#e0e9dd", "#f0e7d9"];
+  const colors = ["#dce4ee", "#d5dfeb", "#e1e7ef", "#cfdae8", "#dce3ed", "#d7e0eb", "#e2e8f0"];
 
   if (provinces && data?.provinces) {
     provinces.replaceChildren();
